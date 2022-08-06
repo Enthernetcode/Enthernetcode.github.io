@@ -1,0 +1,36 @@
+#!/bin/bash
+
+apt upgrade
+
+sleep 1s
+
+apt update
+
+sleep 2s
+
+figlet -c Setup
+
+sleep 2s
+
+apt install python
+
+sleep 3s
+
+apt install toilet
+
+sleep 3s
+
+echo bluilding required dependencies
+
+sleep 4s
+
+
+toilet -F metal Enthernet®
+
+sleep 5s
+
+echo run programme using ./srch.sh
+
+chmod +x srch.sh
+
+./srch.sh
