@@ -29,7 +29,7 @@ toilet -F metal Enthernet®
 
 sleep 5s
 
-echo run programme using ./srch.sh
+echo to run programme type ./srch.sh and hit enter
 
 chmod +x srch.sh
 
