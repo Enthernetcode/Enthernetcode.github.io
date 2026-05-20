@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Roberts Samuel Thankgod (Enthernet) — Infrastructure-First Systems Engineer. Backend systems, automation, reverse proxies, cybersecurity, and machine learning." />
+  <title>Enthernet — Infrastructure-First Systems Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./static/css/style.css" />
+</head>
+<body>
+
+<!-- ─── Navigation ───────────────────────────────────────────────── -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo">
+      <span class="prompt">~$</span> enthernet
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#identity">Skills</a></li>
+      <li><a href="#specialization">Specialization</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#lessons">Field Notes</a></li>
+      <li><a href="#questionnaire" class="nav-cta">Start a Project</a></li>
+    </ul>
+    <div class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── Hero ─────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="container hero-content">
+    <p class="hero-prompt">
+      <span class="prompt-char">~/portfolio $</span>
+      <span>whoami</span>
+      <span class="cursor"></span>
+    </p>
+    <h1 class="hero-name">Enthernet</h1>
+    <p class="hero-title">
+      <span class="accent">Infrastructure-First</span> Systems Engineer
+    </p>
+    <p class="hero-tagline">
+      Backend systems, automation, reverse proxies, security architecture, and
+      deployment infrastructure — built with operational intention.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#questionnaire" class="btn btn-ghost">Start a Project &rarr;</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-value mono">10+</div>
+        <div class="stat-label">Applications Shipped</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value mono">6</div>
+        <div class="stat-label">Services Behind Proxy</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value mono">~80%</div>
+        <div class="stat-label">API Boilerplate Eliminated</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value mono">1</div>
+        <div class="stat-label">Auth Layer, 10 Apps</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── About ────────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="container grid-2">
+    <div class="about-photo">
+      <div class="photo-frame">
+        <!-- Drop snapshot.jpg into static/images/ to replace this placeholder -->
+        <img src="./static/images/snapshot.jpg"
+             alt="Enthernet"
+             onerror="this.parentElement.innerHTML=`
+               <div class='photo-placeholder'>
+                 <svg width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
+                   <path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/>
+                   <circle cx='12' cy='7' r='4'/>
+                 </svg>
+                 <span>snapshot.jpg</span>
+               </div>`" />
+        <div class="photo-badge">Available for Work</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <p class="section-label">// about</p>
+      <h2>Enthernet</h2>
+      <p style="font-family:var(--mono);font-size:0.75rem;color:var(--text-muted);margin-bottom:1.25rem;">
+        Roberts Samuel Thankgod
+      </p>
+      <p class="about-bio">
+        Software engineer and cybersecurity specialist focused on backend systems,
+        automation engineering, infrastructure tooling, and deployment architecture.
+      </p>
+      <p class="about-bio">
+        Interested in reverse proxies, Linux systems, container networking,
+        scalable backend architecture, and operational automation.
+        Prefers understanding how systems work internally rather than
+        blindly consuming abstractions.
+      </p>
+      <p class="about-bio" style="color:var(--text-sub);border-left:2px solid var(--border-hi);padding-left:0.875rem;font-style:italic;">
+        Most systems look simple until production traffic, infrastructure
+        constraints, or 2am debugging sessions expose the real architecture
+        underneath.
+      </p>
+      <div class="about-principles">
+        <div class="principle">
+          <span class="principle-icon">⚙</span>
+          <div class="principle-text">
+            <strong>Understand the Internals</strong>
+            Frameworks are tools, not understanding. Engineering starts making sense
+            when you know how requests move, how proxies route, how systems fail.
+          </div>
+        </div>
+        <div class="principle">
+          <span class="principle-icon">🔒</span>
+          <div class="principle-text">
+            <strong>Security Is Architecture</strong>
+            Not a final-stage checkbox. Part of system design, network structure,
+            deployment strategy, and secret management from day one.
+          </div>
+        </div>
+        <div class="principle">
+          <span class="principle-icon">⚡</span>
+          <div class="principle-text">
+            <strong>Automation Is Leverage</strong>
+            Repetitive workflows should become systems. Operational scaling,
+            not laziness.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Technical Identity ───────────────────────────────────────── -->
+<section id="identity">
+  <div class="container">
+    <div class="identity-header">
+      <p class="section-label">// technical identity</p>
+      <h2>Key Engineering Areas</h2>
+      <p>
+        Infrastructure up through application layer — with operational
+        awareness at every level.
+      </p>
+    </div>
+    <div class="grid-5">
+      <div class="identity-card">
+        <div class="identity-card-icon infra">🖥</div>
+        <h3>Infrastructure</h3>
+        <p style="font-size:0.8rem;color:var(--text-sub);line-height:1.6;margin-bottom:0.75rem;">
+          Reverse proxies, container networking, SSL termination, Linux
+          systems, and deployment architecture.
+        </p>
+        <div class="skill-tags">
+          <span class="tag">Nginx</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Cloudflare</span>
+          <span class="tag">Linux</span>
+          <span class="tag">SSL/TLS</span>
+          <span class="tag">VPS</span>
+        </div>
+      </div>
+      <div class="identity-card">
+        <div class="identity-card-icon backend">🔧</div>
+        <h3>Backend Engineering</h3>
+        <p style="font-size:0.8rem;color:var(--text-sub);line-height:1.6;margin-bottom:0.75rem;">
+          APIs, authentication systems, mail, realtime services,
+          service orchestration, and database interaction.
+        </p>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Django</span>
+          <span class="tag">Flask</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">WebSockets</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Auth</span>
+        </div>
+      </div>
+      <div class="identity-card">
+        <div class="identity-card-icon auto">⚡</div>
+        <h3>Automation</h3>
+        <p style="font-size:0.8rem;color:var(--text-sub);line-height:1.6;margin-bottom:0.75rem;">
+          Browser automation, workflow orchestration, infrastructure
+          scripting, and API automation pipelines.
+        </p>
+        <div class="skill-tags">
+          <span class="tag">Selenium</span>
+          <span class="tag">Playwright</span>
+          <span class="tag">Bash Scripting</span>
+          <span class="tag">Cron</span>
+          <span class="tag">Task Queues</span>
+          <span class="tag">SEO</span>
+          <span class="tag">Web Hosting</span>
+        </div>
+      </div>
+      <div class="identity-card">
+        <div class="identity-card-icon sec">🛡</div>
+        <h3>Security</h3>
+        <p style="font-size:0.8rem;color:var(--text-sub);line-height:1.6;margin-bottom:0.75rem;">
+          Secure architecture, validation layers, access control,
+          attack surface reduction, and defensive engineering.
+        </p>
+        <div class="skill-tags">
+          <span class="tag">Auth Layers</span>
+          <span class="tag">RBAC</span>
+          <span class="tag">Rate Limiting</span>
+          <span class="tag">Secret Mgmt</span>
+          <span class="tag">Hardening</span>
+          <span class="tag">Cryptography</span>
+          <span class="tag">Blockchain</span>
+        </div>
+      </div>
+      <div class="identity-card">
+        <div class="identity-card-icon" style="background:rgba(16,185,129,0.1);">🧠</div>
+        <h3>ML &amp; Blockchain</h3>
+        <p style="font-size:0.8rem;color:var(--text-sub);line-height:1.6;margin-bottom:0.75rem;">
+          Machine learning pipelines, cryptographic systems, blockchain
+          architecture, and SEO-aware deployment strategies.
+        </p>
+        <div class="skill-tags">
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Cryptography</span>
+          <span class="tag">Blockchain</span>
+          <span class="tag">SEO</span>
+          <span class="tag">Web Hosting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Reverse Proxy Specialization ─────────────────────────────── -->
+<section id="specialization">
+  <div class="container spec-grid">
+    <div class="spec-text">
+      <p class="section-label">// specialization</p>
+      <h2>Reverse Proxy Architecture</h2>
+      <p>
+        Reverse proxies sit at the intersection of networking, security,
+        routing, scaling, SSL handling, and service isolation. Once you
+        understand them deeply, infrastructure starts becoming intuitive.
+      </p>
+      <p>
+        They are not "just config files." They are traffic control systems
+        between architecture, security, scalability, and operational stability.
+      </p>
+      <div class="spec-points">
+        <div class="spec-point">Request routing & virtual host configuration</div>
+        <div class="spec-point">SSL/TLS termination and certificate management</div>
+        <div class="spec-point">Cloudflare integration and WAF configuration</div>
+        <div class="spec-point">Multi-service isolation and upstream balancing</div>
+        <div class="spec-point">Security headers, rate limiting, and access control</div>
+        <div class="spec-point">WebSocket proxying for realtime systems</div>
+      </div>
+    </div>
+    <div class="spec-diagram">
+      <div class="diagram-row">
+        <span class="diagram-box d-client">Client Browser</span>
+        <span class="d-arrow">──────&rarr;</span>
+        <span class="diagram-box d-cf">Cloudflare CDN</span>
+      </div>
+      <div class="diagram-row" style="padding-left:2.5rem;">
+        <span style="color:var(--text-muted);">│ DDoS protection, WAF, SSL offload</span>
+      </div>
+      <div class="diagram-row">
+        <span style="width:100px;"></span>
+        <span class="d-arrow" style="flex:0;margin:0 0.5rem;">↓</span>
+      </div>
+      <div class="diagram-row">
+        <span class="diagram-box d-nginx" style="margin-left:auto;margin-right:auto;">Nginx Reverse Proxy</span>
+      </div>
+      <div class="diagram-row" style="padding-left:1rem;gap:1rem;">
+        <span style="color:var(--text-muted);font-size:0.7rem;">
+          routing · SSL · rate limiting · headers
+        </span>
+      </div>
+      <div class="diagram-row" style="justify-content:center;gap:1.5rem;margin-top:0.5rem;">
+        <span style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+          <span class="d-arrow" style="font-size:0.9rem;">↙</span>
+          <span class="diagram-box d-app">App :5000</span>
+        </span>
+        <span style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+          <span class="d-arrow" style="font-size:0.9rem;">↓</span>
+          <span class="diagram-box d-app">API :8000</span>
+        </span>
+        <span style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+          <span class="d-arrow" style="font-size:0.9rem;">↘</span>
+          <span class="diagram-box d-db">DB :3306</span>
+        </span>
+      </div>
+      <div class="diagram-label">
+        Each upstream service is isolated. Nginx handles routing, SSL, and security
+        boundaries. Cloudflare handles DDoS and edge caching. Services never
+        expose ports directly.
+      </div>
+    </div>
+
+    <!-- Auth Flow Diagram -->
+    <div class="spec-diagram" style="margin-top:1.25rem;">
+      <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:1rem;">
+        // auth request flow
+      </div>
+      <div class="diagram-row" style="gap:0.4rem;flex-wrap:wrap;">
+        <span class="diagram-box d-client">Request</span>
+        <span class="d-arrow">→</span>
+        <span class="diagram-box" style="background:rgba(0,229,160,0.1);border:1px solid rgba(0,229,160,0.3);color:var(--accent);">X-API-KEY check</span>
+        <span class="d-arrow">→</span>
+        <span class="diagram-box" style="background:rgba(124,106,255,0.12);border:1px solid rgba(124,106,255,0.3);color:#a99fff;">@role_required</span>
+        <span class="d-arrow">→</span>
+        <span class="diagram-box d-app">Handler</span>
+      </div>
+      <div class="diagram-row" style="padding-left:0.5rem;margin-top:0.5rem;">
+        <span style="color:var(--text-muted);font-size:0.7rem;">
+          missing key → 401 &nbsp;│&nbsp; wrong role → 403 &nbsp;│&nbsp; valid → proceed
+        </span>
+      </div>
+      <div class="diagram-row" style="gap:0.4rem;flex-wrap:wrap;margin-top:0.75rem;">
+        <span class="diagram-box d-client">User login</span>
+        <span class="d-arrow">→</span>
+        <span class="diagram-box" style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);color:#fbbf24;">pbkdf2:sha256 verify</span>
+        <span class="d-arrow">→</span>
+        <span class="diagram-box" style="background:rgba(0,229,160,0.1);border:1px solid rgba(0,229,160,0.3);color:var(--accent);">session / token</span>
+        <span class="d-arrow">→</span>
+        <span class="diagram-box d-app">Authenticated</span>
+      </div>
+      <div class="diagram-label">
+        Sensitive fields (password, enc tokens) are stripped at the model layer before
+        any serialization — never exposed through API responses regardless of endpoint.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Projects ─────────────────────────────────────────────────── -->
+<section id="projects">
+  <div class="container">
+    <div class="projects-header">
+      <p class="section-label">// projects</p>
+      <h2>Selected Work</h2>
+      <p>Real systems. Real operational problems. Honest tradeoffs.</p>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Featured -->
+      <div class="project-card featured">
+        <div class="project-info">
+          <div class="project-meta">
+            <span class="project-type">Platform</span>
+            <span class="project-status wip">In Progress</span>
+          </div>
+          <h3 class="project-title">Vemals — Multi-App Platform</h3>
+          <p class="project-desc">
+            Flask-based platform integrating 10 distinct web applications under
+            unified authentication, shared database models, and real-time chat.
+            Applications span real estate, forex trading, IoT, e-commerce,
+            automation, and more — all served through a single WSGI process with
+            a generic CRUD scaffolding system.
+          </p>
+          <div class="metric-row">
+            <div class="metric"><span class="metric-val">10</span><span class="metric-lbl">apps, 1 auth layer</span></div>
+            <div class="metric"><span class="metric-val">~80%</span><span class="metric-lbl">less endpoint boilerplate via MODEL_LOOKUP</span></div>
+            <div class="metric"><span class="metric-val">0</span><span class="metric-lbl">duplicate auth implementations</span></div>
+          </div>
+          <div class="project-stack skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">SocketIO</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Passenger WSGI</span>
+            <span class="tag">SQLAlchemy</span>
+          </div>
+        </div>
+        <div>
+          <div class="project-architecture">
+            <span class="arch-label">// architecture</span>
+            app.py           → single Flask instance<br>
+            models.py        → 10+ SQLAlchemy domains<br>
+            MODEL_LOOKUP     → generic CRUD routing<br>
+            /api/&lt;model&gt;     → auto-wired endpoints<br>
+            SocketIO         → real-time chat events<br>
+            @role_required   → ForexRole RBAC guard<br>
+            @api_key_required→ X-API-KEY header auth<br>
+            passenger_wsgi.py→ production WSGI entry
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-type">Infrastructure</span>
+          <span class="project-status live">Built</span>
+        </div>
+        <h3 class="project-title">Nginx Multi-Service Proxy Setup</h3>
+        <p class="project-desc">
+          Full Nginx reverse proxy configuration for a multi-service Linux VPS.
+          Handles SSL termination, virtual host routing, upstream isolation,
+          security headers, and rate limiting across multiple applications on
+          a single server.
+        </p>
+        <div class="metric-row">
+          <div class="metric"><span class="metric-val">6</span><span class="metric-lbl">upstream services isolated</span></div>
+          <div class="metric"><span class="metric-val">0</span><span class="metric-lbl">exposed ports on services</span></div>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">Nginx</span>
+          <span class="tag">SSL/TLS</span>
+          <span class="tag">Certbot</span>
+          <span class="tag">Linux</span>
+          <span class="tag">UFW</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-type">Automation</span>
+          <span class="project-status live">Built</span>
+        </div>
+        <h3 class="project-title">Browser Automation Suite</h3>
+        <p class="project-desc">
+          Selenium-based workflow automation for repetitive web tasks — form
+          submission, data scraping, authentication flows, and scheduled
+          execution. Designed to run headless on Linux servers with
+          session persistence and error recovery.
+        </p>
+        <div class="metric-row">
+          <div class="metric"><span class="metric-val">~4hrs</span><span class="metric-lbl">manual work automated weekly</span></div>
+          <div class="metric"><span class="metric-val">24/7</span><span class="metric-lbl">headless server execution</span></div>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Selenium</span>
+          <span class="tag">ChromeDriver</span>
+          <span class="tag">Cron</span>
+          <span class="tag">Bash</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-type">Security / API</span>
+          <span class="project-status live">Built</span>
+        </div>
+        <h3 class="project-title">Secure API Architecture</h3>
+        <p class="project-desc">
+          REST API with layered authentication — API key guards, role-based
+          access control, input validation, and sensitive field filtering on
+          serialized model output. Designed with defense-in-depth rather than
+          a single auth boundary.
+        </p>
+        <div class="skill-tags">
+          <span class="tag">Flask</span>
+          <span class="tag">RBAC</span>
+          <span class="tag">JWT</span>
+          <span class="tag">Validation</span>
+          <span class="tag">Rate Limiting</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Field Notes (Failure Stories) ───────────────────────────── -->
+<section id="lessons">
+  <div class="container">
+    <div class="lessons-header">
+      <p class="section-label">// field notes</p>
+      <h2>What Broke &amp; What I Learned</h2>
+      <p>
+        Production systems are carefully organized chaos negotiating temporary
+        peace treaties. These are the incidents that actually built the
+        engineering instinct.
+      </p>
+    </div>
+    <div class="lessons-grid">
+
+      <div class="lesson-card">
+        <div class="lesson-meta">
+          <span class="lesson-area">WebSockets / Flask</span>
+          <span class="lesson-outcome outcome-fixed">Resolved</span>
+        </div>
+        <h3 class="lesson-title">SocketIO connections dropping silently under concurrent users</h3>
+        <div class="lesson-body">
+          <div class="lesson-block">
+            <span class="lesson-block-label">What broke</span>
+            Real-time chat messages were delivered inconsistently — some clients
+            received them, others didn't. No errors in logs. The system appeared
+            healthy until load increased.
+          </div>
+          <div class="lesson-block">
+            <span class="lesson-block-label">Why it broke</span>
+            SocketIO's default long-polling transport was competing with the WSGI
+            process model. Without sticky sessions at the proxy layer, broadcast
+            events weren't reaching all connected clients across processes.
+          </div>
+          <div class="lesson-block">
+            <span class="lesson-block-label">How I debugged it</span>
+            Isolated the issue by forcing WebSocket transport only, then traced
+            dropped events through Nginx access logs. The pattern showed requests
+            hitting different upstream workers without session affinity.
+          </div>
+          <div class="lesson-block lesson-lesson">
+            <span class="lesson-block-label">Architectural lesson</span>
+            Stateful protocols require infrastructure-level session awareness.
+            The proxy layer is not transparent — it has to be designed for the
+            protocol sitting behind it.
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <div class="lesson-meta">
+          <span class="lesson-area">Nginx / SSL</span>
+          <span class="lesson-outcome outcome-fixed">Resolved</span>
+        </div>
+        <h3 class="lesson-title">SSL renewal silently broke upstream routing for 3 services</h3>
+        <div class="lesson-body">
+          <div class="lesson-block">
+            <span class="lesson-block-label">What broke</span>
+            After Certbot renewed a wildcard certificate, three virtual hosts
+            stopped responding with 502 Bad Gateway. The certificate renewal
+            succeeded. Nginx reported no errors. Services were still running.
+          </div>
+          <div class="lesson-block">
+            <span class="lesson-block-label">Why it broke</span>
+            Certbot's renewal hook reloaded Nginx with a config that had
+            a subtle upstream block conflict introduced during an earlier manual
+            edit. The config was technically valid — it just routed to the wrong
+            sockets. Nginx accepted it without complaint.
+          </div>
+          <div class="lesson-block">
+            <span class="lesson-block-label">How I debugged it</span>
+            <span class="mono" style="font-size:0.78rem;">nginx -T</span> dumped the full merged config.
+            Diffing it against the last working state revealed a duplicated
+            upstream block with a port conflict that only manifested post-reload.
+          </div>
+          <div class="lesson-block lesson-lesson">
+            <span class="lesson-block-label">Architectural lesson</span>
+            Automation that modifies live infrastructure needs post-action
+            validation. A successful renewal hook should verify service
+            reachability — not just assume Nginx reloaded cleanly.
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <div class="lesson-meta">
+          <span class="lesson-area">SQLAlchemy / API</span>
+          <span class="lesson-outcome outcome-fixed">Resolved</span>
+        </div>
+        <h3 class="lesson-title">Generic serializer causing infinite recursion on relational models</h3>
+        <div class="lesson-body">
+          <div class="lesson-block">
+            <span class="lesson-block-label">What broke</span>
+            The generic <span class="mono" style="font-size:0.78rem;">as_dict()</span> serializer worked
+            for flat models. When called on models with back-populated
+            relationships, the API returned a 500 with a recursion depth
+            exceeded error.
+          </div>
+          <div class="lesson-block">
+            <span class="lesson-block-label">Why it broke</span>
+            SQLAlchemy's lazy-loaded relationships meant that serializing a
+            <span class="mono" style="font-size:0.78rem;">PropertyChat</span> object would trigger
+            serialization of its participants, which each held a reference back
+            to the chat — circular indefinitely.
+          </div>
+          <div class="lesson-block">
+            <span class="lesson-block-label">How I debugged it</span>
+            Traced the stack frame — the recursion pattern was clear once the
+            model graph was mapped. Fixed by adding a depth-limit parameter and
+            an explicit exclusion list for relationship fields in the serializer.
+          </div>
+          <div class="lesson-block lesson-lesson">
+            <span class="lesson-block-label">Architectural lesson</span>
+            Generic utilities that touch data models need explicit boundaries.
+            Convenience and correctness diverge at relational edges — the
+            serializer needed to know what it was allowed to traverse.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Requirements Questionnaire ───────────────────────────────── -->
+<section id="questionnaire">
+  <div class="container">
+    <div class="questionnaire-header">
+      <p class="section-label">// start a project</p>
+      <h2>Requirements Questionnaire</h2>
+      <p>
+        Serious projects need serious scoping. Fill this out and expect a
+        technically grounded response — not a templated sales reply.
+      </p>
+    </div>
+    <div class="questionnaire-wrap">
+
+      <div class="q-sidebar">
+        <h3>What happens next</h3>
+        <p>
+          This questionnaire replaces a discovery call. It helps scope the
+          work accurately before any time is spent. Vague briefs produce
+          vague systems.
+        </p>
+        <div class="q-sidebar-steps">
+          <div class="q-step active">
+            <div class="q-step-num">01</div>
+            <div class="q-step-label">Project Goals</div>
+          </div>
+          <div class="q-step">
+            <div class="q-step-num">02</div>
+            <div class="q-step-label">Stack & APIs</div>
+          </div>
+          <div class="q-step">
+            <div class="q-step-num">03</div>
+            <div class="q-step-label">Infrastructure</div>
+          </div>
+          <div class="q-step">
+            <div class="q-step-num">04</div>
+            <div class="q-step-label">Contact</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-form" id="q-form-wrap">
+        <form id="inquiry-form" novalidate>
+
+          <!-- 01 Project Goals -->
+          <div class="q-form-section" data-section="0">
+            <div class="q-section-title">01 — Project Goals</div>
+
+            <div class="form-group">
+              <label class="form-label" for="project-name">Project name / working title</label>
+              <input type="text" id="project-name" name="project_name"
+                     class="form-input" placeholder="e.g. Inventory API, VPS Setup, Automation Bot" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="project-type">
+                Project type
+              </label>
+              <select id="project-type" name="project_type" class="form-select" required>
+                <option value="" disabled selected>Select a type</option>
+                <option value="web_app">Web Application</option>
+                <option value="api">API / Backend Service</option>
+                <option value="infrastructure">Infrastructure / Server Setup</option>
+                <option value="automation">Automation System</option>
+                <option value="security">Security / Hardening</option>
+                <option value="devops">DevOps / Deployment Pipeline</option>
+                <option value="fullstack">Full-Stack Platform</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="project-goals">
+                Project goals <span>— what should this system do and why does it matter?</span>
+              </label>
+              <textarea id="project-goals" name="project_goals" class="form-textarea"
+                        placeholder="Describe the operational problem this solves. Be specific — 'I need a web app' is not a goal." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="expected-scale">
+                Expected scale <span>— users, requests/day, data volume</span>
+              </label>
+              <input type="text" id="expected-scale" name="expected_scale"
+                     class="form-input" placeholder="e.g. 500 users, ~2k API calls/day, 10GB storage" />
+            </div>
+          </div>
+
+          <!-- 02 Stack & APIs -->
+          <div class="q-form-section" data-section="1">
+            <div class="q-section-title">02 — Stack &amp; API Requirements</div>
+
+            <div class="form-group">
+              <label class="form-label">
+                Preferred stack <span>— check all that apply</span>
+              </label>
+              <div class="check-group">
+                <label class="check-item">
+                  <input type="checkbox" name="stack" value="python_flask" />
+                  <span>Python / Flask</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="stack" value="python_fastapi" />
+                  <span>Python / FastAPI</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="stack" value="nodejs" />
+                  <span>Node.js</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="stack" value="nginx" />
+                  <span>Nginx / Reverse Proxy</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="stack" value="docker" />
+                  <span>Docker / Containers</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="stack" value="linux_vps" />
+                  <span>Linux / VPS</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="stack" value="mysql" />
+                  <span>MySQL / PostgreSQL</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="stack" value="no_preference" />
+                  <span>No preference</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="api-requirements">
+                API requirements <span>— third-party integrations, webhooks, external services</span>
+              </label>
+              <textarea id="api-requirements" name="api_requirements" class="form-textarea"
+                        placeholder="e.g. Stripe payments, Twilio SMS, Google OAuth, custom internal API, none"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="auth-requirements">
+                Authentication requirements <span>— how should users or services authenticate?</span>
+              </label>
+              <select id="auth-requirements" name="auth_requirements" class="form-select">
+                <option value="" disabled selected>Select an approach</option>
+                <option value="api_key">API Key (service-to-service)</option>
+                <option value="session">Session-based login</option>
+                <option value="jwt">JWT / Token auth</option>
+                <option value="oauth">OAuth (Google, GitHub, etc.)</option>
+                <option value="none">No authentication needed</option>
+                <option value="unsure">Unsure — needs discussion</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 03 Infrastructure & Deployment -->
+          <div class="q-form-section" data-section="2">
+            <div class="q-section-title">03 — Infrastructure &amp; Deployment</div>
+
+            <div class="form-group">
+              <label class="form-label" for="deployment-env">
+                Deployment environment
+              </label>
+              <select id="deployment-env" name="deployment_env" class="form-select" required>
+                <option value="" disabled selected>Select environment</option>
+                <option value="vps_linux">VPS / Linux Server</option>
+                <option value="cloud_aws">Cloud — AWS</option>
+                <option value="cloud_gcp">Cloud — Google Cloud</option>
+                <option value="cloud_do">Cloud — DigitalOcean / Hetzner</option>
+                <option value="docker_containers">Docker / Containers</option>
+                <option value="bare_metal">Bare Metal</option>
+                <option value="shared_hosting">Shared Hosting</option>
+                <option value="unsure">Unsure</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="linux-vps-requirements">
+                Linux / VPS requirements <span>— distro preference, server specs, SSH access, existing setup</span>
+              </label>
+              <textarea id="linux-vps-requirements" name="linux_vps_requirements" class="form-textarea"
+                        placeholder="e.g. Ubuntu 22.04, 2vCPU 4GB RAM, SSH access available, existing Nginx on port 80"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="automation-expectations">
+                Automation expectations <span>— what should run automatically without manual intervention?</span>
+              </label>
+              <textarea id="automation-expectations" name="automation_expectations" class="form-textarea"
+                        placeholder="e.g. Daily backups, scheduled scraping at 6am, auto-restart on crash, SSL renewal, deployment pipeline"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="security-concerns">
+                Security concerns <span>— known threats, compliance requirements, sensitive data</span>
+              </label>
+              <textarea id="security-concerns" name="security_concerns" class="form-textarea"
+                        placeholder="e.g. Handles financial data, needs rate limiting on public endpoints, must not expose DB directly"></textarea>
+            </div>
+          </div>
+
+          <!-- 04 Contact -->
+          <div class="q-form-section" data-section="3">
+            <div class="q-section-title">04 — Contact</div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="contact-name">Name</label>
+                <input type="text" id="contact-name" name="contact_name"
+                       class="form-input" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-email">Email</label>
+                <input type="email" id="contact-email" name="contact_email"
+                       class="form-input" placeholder="you@company.com" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="timeline">
+                  Timeline <span>— when do you need this?</span>
+                </label>
+                <select id="timeline" name="timeline" class="form-select">
+                  <option value="" disabled selected>Select timeline</option>
+                  <option value="asap">As soon as possible</option>
+                  <option value="2_weeks">Within 2 weeks</option>
+                  <option value="1_month">Within 1 month</option>
+                  <option value="3_months">1–3 months</option>
+                  <option value="flexible">Flexible</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="budget">
+                  Budget range <span>— optional</span>
+                </label>
+                <select id="budget" name="budget" class="form-select">
+                  <option value="" selected>Prefer not to say</option>
+                  <option value="under_500">Under $500</option>
+                  <option value="500_1500">$500 – $1,500</option>
+                  <option value="1500_5000">$1,500 – $5,000</option>
+                  <option value="5000_plus">$5,000+</option>
+                  <option value="discuss">Let's discuss</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="additional-context">
+                Anything else <span>— context, constraints, red flags from past projects</span>
+              </label>
+              <textarea id="additional-context" name="additional_context" class="form-textarea"
+                        style="min-height:70px;"
+                        placeholder="The more honest context you provide, the better the scoping."></textarea>
+            </div>
+          </div>
+
+          <div class="q-form-footer">
+            <p>Your information is used only to scope and respond to your inquiry.</p>
+            <button type="submit" class="btn btn-primary">Submit Inquiry &rarr;</button>
+          </div>
+        </form>
+
+        <div class="q-success">
+          <div class="q-success-icon">✓</div>
+          <h3>Inquiry received</h3>
+          <p>
+            Expect a technically grounded response within 48 hours.
+            If the project is a good fit, the next step is a brief technical
+            alignment — not a sales call.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Contact ───────────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="container contact-inner">
+    <div class="contact-left">
+      <p class="section-label">// contact</p>
+      <h2>Get in touch</h2>
+      <p>
+        Open to freelance engagements, contract infrastructure work,
+        and backend engineering roles. Not open to tutorial websites
+        or "MVP ideas" with no operational requirements.
+      </p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:enthernet@enthernetservices.com" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M2 7l10 7 10-7"/>
+        </svg>
+        Email
+      </a>
+      <a href="https://github.com/enthernetcode" class="contact-link" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.031 1.531 1.031.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.026A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.295 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+        </svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/renuel-roberts-st-enthernet-code" class="contact-link" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ────────────────────────────────────────────────────── -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <span class="accent">~/enthernet</span> &mdash;
+      Roberts Samuel Thankgod &bull; Infrastructure-First Systems Engineer
+    </div>
+    <div class="footer-right">
+      Built with operational intention. No animated gradients.
+    </div>
+  </div>
+</footer>
+
+<script src="./static/js/main.js"></script>
+</body>
+</html>
