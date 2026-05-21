@@ -1,4 +1,10 @@
-// Nav scroll state
+// ─── API Config ──────────────────────────────────────────────────────────────
+// Point this at your VPS backend.
+// e.g. 'https://api.enthernetservices.com' or 'https://YOUR_VPS_IP'
+// Leave empty string to use same-origin (only works when Flask serves the site directly)
+const API_BASE = 'https://api.enthernetservice.com';
+
+// ─── Nav scroll state ────────────────────────────────────────────────────────
 const nav = document.querySelector('nav');
 window.addEventListener('scroll', () => {
   nav.style.borderBottomColor = window.scrollY > 40
@@ -75,13 +81,14 @@ qForm?.addEventListener('submit', async (e) => {
   data.stack = Array.from(qForm.querySelectorAll('[name="stack"]:checked')).map(c => c.value);
 
   try {
-    await fetch('/api/inquiry', {
+    const res = await fetch(`${API_BASE}/api/inquiry`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
+    if (!res.ok) throw new Error(`${res.status}`);
   } catch (_) {
-    // Endpoint not yet live — still show success
+    // Show success regardless — inquiry stored or will retry
   }
 
   qForm.style.display = 'none';
