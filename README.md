@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./static/images/snapshot.jpg" width="140" alt="Enthernet" />
+<img src="./static/images/snapshot.png" width="140" alt="Enthernet" />
 
 <br />
 
