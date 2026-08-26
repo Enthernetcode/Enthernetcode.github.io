@@ -45,6 +45,8 @@ qForm?.addEventListener('submit', async event => {
   if (button) { button.disabled = true; button.textContent = 'Sending...'; }
 
   const data = Object.fromEntries(new FormData(qForm).entries());
+  data.stack = Array.from(qForm.querySelectorAll('[name="stack"]:checked')).map(c => c.value);
+
   try {
     const response = await fetch(`${API_BASE}/api/inquiry`, {
       method: 'POST',
@@ -56,7 +58,7 @@ qForm?.addEventListener('submit', async event => {
     qSuccess?.classList.add('visible');
   } catch (error) {
     console.error(error);
-    if (button) { button.disabled = false; button.textContent = 'Send Inquiry'; }
+    if (button) { button.disabled = false; button.textContent = 'Submit Inquiry →'; }
   }
 });
 
@@ -78,3 +80,160 @@ if ('IntersectionObserver' in window) {
     revealObserver.observe(el);
   });
 }
+
+// ─── Portfolio maintenance: content only, no layout mutations ───────────────
+(() => {
+  // Keep the original four-stat layout and only update its current values.
+  const stats = document.querySelectorAll('.hero-stats .stat-item');
+  const currentStats = [
+    ['85', 'Days of Cloud & Security'],
+    ['6+', 'Live Enthernet Properties'],
+    ['9', 'Roadmap Phases'],
+    ['100', 'Day Engineering Target']
+  ];
+  stats.forEach((item, index) => {
+    if (!currentStats[index]) return;
+    const value = item.querySelector('.stat-value');
+    const label = item.querySelector('.stat-label');
+    if (value) value.textContent = currentStats[index][0];
+    if (label) label.textContent = currentStats[index][1];
+  });
+
+  // snapshot.png is the preferred portrait. The old inline onerror replaced the
+  // whole frame after one failed request, so rebuild the original frame content
+  // if that placeholder has already appeared. snapshot.jpg is a real repo asset
+  // and is used only as a network/cache fallback.
+  const frame = document.querySelector('.photo-frame');
+  if (frame) {
+    const badgeText = frame.querySelector('.photo-badge')?.textContent || 'Available for Work';
+    let portrait = frame.querySelector('img');
+
+    const mountPortrait = () => {
+      frame.innerHTML = '';
+      portrait = document.createElement('img');
+      portrait.alt = 'Renuel Roberts, Enthernet infrastructure, cloud and cybersecurity engineer';
+      portrait.decoding = 'async';
+      portrait.src = '/static/images/snapshot.png?v=20260827';
+      portrait.onerror = () => {
+        if (!portrait.dataset.fallback) {
+          portrait.dataset.fallback = '1';
+          portrait.src = '/static/images/snapshot.jpg?v=20260827';
+        }
+      };
+      frame.appendChild(portrait);
+      const badge = document.createElement('div');
+      badge.className = 'photo-badge';
+      badge.textContent = badgeText;
+      frame.appendChild(badge);
+    };
+
+    if (!portrait || frame.querySelector('.photo-placeholder')) {
+      mountPortrait();
+    } else {
+      portrait.removeAttribute('onerror');
+      portrait.alt = 'Renuel Roberts, Enthernet infrastructure, cloud and cybersecurity engineer';
+      portrait.src = '/static/images/snapshot.png?v=20260827';
+      portrait.onerror = () => {
+        if (!portrait.dataset.fallback) {
+          portrait.dataset.fallback = '1';
+          portrait.src = '/static/images/snapshot.jpg?v=20260827';
+        }
+      };
+    }
+  }
+
+  // SEO/entity metadata only. Nothing below changes visible layout or sections.
+  const canonicalUrl = 'https://enthernet.com/';
+  const title = 'Enthernet | Cloud, Cybersecurity & Systems Engineering by Renuel Roberts';
+  const description = 'Enthernet is the engineering portfolio and public evidence hub of Renuel Roberts, covering cloud infrastructure, cybersecurity, backend systems, Linux, AWS, automation, Docker, Kubernetes, Ansible and CI/CD.';
+  const image = 'https://enthernet.com/static/images/snapshot.png';
+  const linkedin = 'https://www.linkedin.com/in/renuel-roberts-st-enthernet-code-6571a7241';
+  const github = 'https://github.com/Enthernetcode';
+  const blog = 'https://blog.enthernet.com/';
+  const fcs = 'https://fcs.enthernet.com/';
+  const coreShield = 'https://core-shield.enthernetservice.com/';
+  const pinchAI = 'https://pinchai.enthernetservice.com/';
+  const paas = 'https://admin.enthernetservice.com/';
+
+  document.title = title;
+
+  function setMeta(attribute, key, value) {
+    let node = document.head.querySelector(`meta[${attribute}="${key}"]`);
+    if (!node) {
+      node = document.createElement('meta');
+      node.setAttribute(attribute, key);
+      document.head.appendChild(node);
+    }
+    node.setAttribute('content', value);
+  }
+
+  let canonical = document.head.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    document.head.appendChild(canonical);
+  }
+  canonical.href = canonicalUrl;
+
+  setMeta('name', 'description', description);
+  setMeta('name', 'author', 'Renuel Roberts');
+  setMeta('name', 'robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
+  setMeta('property', 'og:type', 'website');
+  setMeta('property', 'og:site_name', 'Enthernet');
+  setMeta('property', 'og:title', title);
+  setMeta('property', 'og:description', description);
+  setMeta('property', 'og:url', canonicalUrl);
+  setMeta('property', 'og:image', image);
+  setMeta('name', 'twitter:card', 'summary_large_image');
+  setMeta('name', 'twitter:title', title);
+  setMeta('name', 'twitter:description', description);
+  setMeta('name', 'twitter:image', image);
+
+  const entityGraph = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${canonicalUrl}#website`,
+        url: canonicalUrl,
+        name: 'Enthernet',
+        alternateName: ['Enthernet Code', 'Enthernet Portfolio'],
+        description,
+        publisher: { '@id': `${canonicalUrl}#organization` },
+        inLanguage: 'en'
+      },
+      {
+        '@type': 'Organization',
+        '@id': `${canonicalUrl}#organization`,
+        name: 'Enthernet',
+        alternateName: 'Enthernet Code',
+        url: canonicalUrl,
+        founder: { '@id': `${canonicalUrl}#renuel-roberts` },
+        sameAs: [github, linkedin, blog, fcs, coreShield, pinchAI, paas]
+      },
+      {
+        '@type': 'Person',
+        '@id': `${canonicalUrl}#renuel-roberts`,
+        name: 'Renuel Roberts',
+        alternateName: ['Enthernet Code', 'Renuel Roberts ST Enthernet Code'],
+        url: canonicalUrl,
+        image,
+        sameAs: [github, linkedin, blog],
+        knowsAbout: [
+          'Cloud computing', 'Cybersecurity', 'AWS', 'Linux', 'Networking',
+          'Ansible', 'Docker', 'Kubernetes', 'CI/CD', 'GitHub Actions',
+          'Backend systems', 'Infrastructure automation'
+        ]
+      }
+    ]
+  };
+
+  let structured = document.getElementById('enthernet-entity-graph');
+  if (!structured) {
+    structured = document.createElement('script');
+    structured.id = 'enthernet-entity-graph';
+    structured.type = 'application/ld+json';
+    document.head.appendChild(structured);
+  }
+  structured.textContent = JSON.stringify(entityGraph);
+})();
