@@ -36,6 +36,20 @@ if ('IntersectionObserver' in window) {
   sections.forEach(section => observer.observe(section));
 }
 
+// Questionnaire step tracking
+const stepEls = document.querySelectorAll('.q-step');
+const formSections = document.querySelectorAll('.q-form-section[data-section]');
+function updateActiveStep() {
+  let activeIdx = 0;
+  const scrollMid = window.scrollY + window.innerHeight / 2;
+  formSections.forEach((sec, i) => {
+    if (sec.getBoundingClientRect().top + window.scrollY < scrollMid) activeIdx = i;
+  });
+  stepEls.forEach((s, i) => s.classList.toggle('active', i === activeIdx));
+}
+window.addEventListener('scroll', updateActiveStep);
+updateActiveStep();
+
 // Inquiry form
 const qForm = document.getElementById('inquiry-form');
 const qSuccess = document.querySelector('.q-success');
@@ -62,28 +76,9 @@ qForm?.addEventListener('submit', async event => {
   }
 });
 
-// Subtle reveal animation. Content remains visible if JS or IntersectionObserver fails.
-if ('IntersectionObserver' in window) {
-  const revealEls = document.querySelectorAll('.identity-card, .project-card, .spec-point');
-  const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-      revealObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.08 });
-  revealEls.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(12px)';
-    el.style.transition = 'opacity .35s ease, transform .35s ease';
-    revealObserver.observe(el);
-  });
-}
-
-// ─── Portfolio maintenance: content only, no layout mutations ───────────────
+// ─── Portfolio maintenance: update content without replacing the design ─────
 (() => {
-  // Keep the original four-stat layout and only update its current values.
+  // Keep the existing four-stat visual structure and update only the data.
   const stats = document.querySelectorAll('.hero-stats .stat-item');
   const currentStats = [
     ['85', 'Days of Cloud & Security'],
@@ -99,10 +94,12 @@ if ('IntersectionObserver' in window) {
     if (label) label.textContent = currentStats[index][1];
   });
 
-  // snapshot.png is the preferred portrait. The old inline onerror replaced the
-  // whole frame after one failed request, so rebuild the original frame content
-  // if that placeholder has already appeared. snapshot.jpg is a real repo asset
-  // and is used only as a network/cache fallback.
+  const tagline = document.querySelector('.hero-tagline');
+  if (tagline) {
+    tagline.textContent = 'Infrastructure, cloud, backend automation and defensive security, backed by deployed systems and an 85-day public engineering record.';
+  }
+
+  // snapshot.png is the preferred portrait. Do not destroy the frame on a failed load.
   const frame = document.querySelector('.photo-frame');
   if (frame) {
     const badgeText = frame.querySelector('.photo-badge')?.textContent || 'Available for Work';
@@ -142,98 +139,123 @@ if ('IntersectionObserver' in window) {
     }
   }
 
-  // SEO/entity metadata only. Nothing below changes visible layout or sections.
-  const canonicalUrl = 'https://enthernet.com/';
-  const title = 'Enthernet | Cloud, Cybersecurity & Systems Engineering by Renuel Roberts';
-  const description = 'Enthernet is the engineering portfolio and public evidence hub of Renuel Roberts, covering cloud infrastructure, cybersecurity, backend systems, Linux, AWS, automation, Docker, Kubernetes, Ansible and CI/CD.';
-  const image = 'https://enthernet.com/static/images/snapshot.png';
-  const linkedin = 'https://www.linkedin.com/in/renuel-roberts-st-enthernet-code-6571a7241';
-  const github = 'https://github.com/Enthernetcode';
-  const blog = 'https://blog.enthernet.com/';
-  const fcs = 'https://fcs.enthernet.com/';
-  const coreShield = 'https://core-shield.enthernetservice.com/';
-  const pinchAI = 'https://pinchai.enthernetservice.com/';
-  const paas = 'https://admin.enthernetservice.com/';
-
-  document.title = title;
-
-  function setMeta(attribute, key, value) {
-    let node = document.head.querySelector(`meta[${attribute}="${key}"]`);
-    if (!node) {
-      node = document.createElement('meta');
-      node.setAttribute(attribute, key);
-      document.head.appendChild(node);
-    }
-    node.setAttribute('content', value);
-  }
-
-  let canonical = document.head.querySelector('link[rel="canonical"]');
-  if (!canonical) {
-    canonical = document.createElement('link');
-    canonical.rel = 'canonical';
-    document.head.appendChild(canonical);
-  }
-  canonical.href = canonicalUrl;
-
-  setMeta('name', 'description', description);
-  setMeta('name', 'author', 'Renuel Roberts');
-  setMeta('name', 'robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
-  setMeta('property', 'og:type', 'website');
-  setMeta('property', 'og:site_name', 'Enthernet');
-  setMeta('property', 'og:title', title);
-  setMeta('property', 'og:description', description);
-  setMeta('property', 'og:url', canonicalUrl);
-  setMeta('property', 'og:image', image);
-  setMeta('name', 'twitter:card', 'summary_large_image');
-  setMeta('name', 'twitter:title', title);
-  setMeta('name', 'twitter:description', description);
-  setMeta('name', 'twitter:image', image);
-
-  const entityGraph = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebSite',
-        '@id': `${canonicalUrl}#website`,
-        url: canonicalUrl,
-        name: 'Enthernet',
-        alternateName: ['Enthernet Code', 'Enthernet Portfolio'],
-        description,
-        publisher: { '@id': `${canonicalUrl}#organization` },
-        inLanguage: 'en'
-      },
-      {
-        '@type': 'Organization',
-        '@id': `${canonicalUrl}#organization`,
-        name: 'Enthernet',
-        alternateName: 'Enthernet Code',
-        url: canonicalUrl,
-        founder: { '@id': `${canonicalUrl}#renuel-roberts` },
-        sameAs: [github, linkedin, blog, fcs, coreShield, pinchAI, paas]
-      },
-      {
-        '@type': 'Person',
-        '@id': `${canonicalUrl}#renuel-roberts`,
-        name: 'Renuel Roberts',
-        alternateName: ['Enthernet Code', 'Renuel Roberts ST Enthernet Code'],
-        url: canonicalUrl,
-        image,
-        sameAs: [github, linkedin, blog],
-        knowsAbout: [
-          'Cloud computing', 'Cybersecurity', 'AWS', 'Linux', 'Networking',
-          'Ansible', 'Docker', 'Kubernetes', 'CI/CD', 'GitHub Actions',
-          'Backend systems', 'Infrastructure automation'
-        ]
-      }
-    ]
+  // Add current capabilities to the existing skill cards only.
+  const skillCards = document.querySelectorAll('#identity .identity-card');
+  const addTags = (card, tags) => {
+    const holder = card?.querySelector('.skill-tags');
+    if (!holder) return;
+    tags.forEach(tag => {
+      if ([...holder.querySelectorAll('.tag')].some(el => el.textContent.trim() === tag)) return;
+      holder.insertAdjacentHTML('beforeend', `<span class="tag">${tag}</span>`);
+    });
   };
+  addTags(skillCards[0], ['AWS', 'Kubernetes', 'Helm']);
+  addTags(skillCards[2], ['Ansible', 'GitHub Actions', 'CI/CD']);
+  addTags(skillCards[3], ['Container Security', 'GitHub Secrets']);
 
-  let structured = document.getElementById('enthernet-entity-graph');
-  if (!structured) {
-    structured = document.createElement('script');
-    structured.id = 'enthernet-entity-graph';
-    structured.type = 'application/ld+json';
-    document.head.appendChild(structured);
+  // Restore the current ecosystem card inside the original project grid.
+  const projects = document.querySelector('#projects .projects-grid');
+  if (projects && !document.getElementById('current-platforms')) {
+    const wrap = document.createElement('div');
+    wrap.id = 'current-platforms';
+    wrap.className = 'project-card featured';
+    wrap.innerHTML = `
+      <div class="project-info">
+        <div class="project-meta">
+          <span class="project-type">Current Work · 2026</span>
+          <span class="project-status live">Live</span>
+        </div>
+        <h3 class="project-title">Enthernet Engineering Ecosystem</h3>
+        <p class="project-desc">Enthernet now spans multiple public engineering, cybersecurity, research and platform properties rather than compressing unrelated work into one portfolio page.</p>
+        <div class="metric-row">
+          <div class="metric"><span class="metric-val">85/100</span><span class="metric-lbl">Cloud & Security journey published</span></div>
+          <div class="metric"><span class="metric-val">6+</span><span class="metric-lbl">Live Enthernet properties</span></div>
+          <div class="metric"><span class="metric-val">Live</span><span class="metric-lbl">Core-Shield & Pinch AI</span></div>
+        </div>
+        <div class="project-stack skill-tags">
+          <span class="tag">AWS</span><span class="tag">Ansible</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">GitHub Actions</span><span class="tag">DevSecOps</span>
+        </div>
+      </div>
+      <div class="project-architecture">
+        <span class="arch-label">// public evidence</span>
+        <a href="https://blog.enthernet.com">blog.enthernet.com ↗</a><br>
+        <a href="https://core-shield.enthernetservice.com">core-shield.enthernetservice.com ↗</a><br>
+        <a href="https://pinchai.enthernetservice.com">pinchai.enthernetservice.com ↗</a><br>
+        <a href="https://fcs.enthernet.com">fcs.enthernet.com ↗</a><br>
+        <a href="https://admin.enthernetservice.com">admin.enthernetservice.com ↗</a>
+      </div>`;
+    projects.prepend(wrap);
   }
-  structured.textContent = JSON.stringify(entityGraph);
+
+  // Restore Experience & Milestones after the existing Projects section.
+  // JHC Media is intentionally excluded.
+  const projectSection = document.getElementById('projects');
+  if (projectSection && !document.getElementById('milestones')) {
+    const sec = document.createElement('section');
+    sec.id = 'milestones';
+    sec.innerHTML = `
+      <div class="container">
+        <div class="projects-header">
+          <p class="section-label">// experience & milestones</p>
+          <h2>Built, operated, documented.</h2>
+          <p>Recent engineering evidence through August 2026.</p>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-meta"><span class="project-type">Cloud Engineering</span><span class="project-status live">Day 85</span></div>
+            <h3 class="project-title">#100DaysOfCloudAndSecurity</h3>
+            <p class="project-desc">Progressed from AWS foundations through Ansible, Linux administration, networking, Docker, Kubernetes and into CI/CD with GitHub Actions. Each stage is documented as public technical evidence rather than a skills checklist.</p>
+            <div class="skill-tags"><span class="tag">AWS</span><span class="tag">Linux</span><span class="tag">Networking</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">CI/CD</span></div>
+            <p style="margin-top:1rem"><a class="accent" href="https://blog.enthernet.com/100-days/">Open 100 Days archive →</a></p>
+          </div>
+          <div class="project-card">
+            <div class="project-meta"><span class="project-type">Cybersecurity Education</span><span class="project-status live">Live</span></div>
+            <h3 class="project-title">Core-Shield Cyber Labs</h3>
+            <p class="project-desc">Built a hands-on security learning platform around Concept over Syntax and Logic over Code, including browser-based playgrounds, bounded execution, technical courses, an AI mentor and certificate flows.</p>
+            <div class="skill-tags"><span class="tag">Security</span><span class="tag">Docker</span><span class="tag">Linux</span><span class="tag">Isolation</span><span class="tag">Education</span></div>
+            <p style="margin-top:1rem"><a class="accent" href="https://core-shield.enthernetservice.com">Visit Core-Shield →</a></p>
+          </div>
+          <div class="project-card">
+            <div class="project-meta"><span class="project-type">Research Engineering</span><span class="project-status live">Live</span></div>
+            <h3 class="project-title">Enthernet Pinch AI</h3>
+            <p class="project-desc">Developed a research assistant integrating scholarly discovery providers including OpenAlex, Crossref and Semantic Scholar, with normalized source metadata, rate-limit handling and provenance-oriented audit trails.</p>
+            <div class="skill-tags"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">Research</span><span class="tag">Metadata</span><span class="tag">Audit Trail</span></div>
+            <p style="margin-top:1rem"><a class="accent" href="https://pinchai.enthernetservice.com">Visit Pinch AI →</a></p>
+          </div>
+          <div class="project-card">
+            <div class="project-meta"><span class="project-type">Infrastructure Operations</span><span class="project-status live">Production</span></div>
+            <h3 class="project-title">Multi-Service Linux & Automation Operations</h3>
+            <p class="project-desc">Operated Python services behind Nginx with TLS, Redis/Celery workers, MySQL/PostgreSQL-oriented architectures, background jobs, mail integrations, service hardening and resource-constrained VPS troubleshooting.</p>
+            <div class="skill-tags"><span class="tag">Nginx</span><span class="tag">Redis</span><span class="tag">Celery</span><span class="tag">MySQL</span><span class="tag">TLS</span><span class="tag">VPS</span></div>
+          </div>
+        </div>
+      </div>`;
+    projectSection.insertAdjacentElement('afterend', sec);
+
+    const projectsLink = navLinks?.querySelector('a[href="#projects"]')?.parentElement;
+    if (navLinks && projectsLink && !navLinks.querySelector('a[href="#milestones"]')) {
+      const li = document.createElement('li');
+      li.innerHTML = '<a href="#milestones">Milestones</a>';
+      projectsLink.insertAdjacentElement('afterend', li);
+    }
+  }
+
+  // Apply reveal animation after dynamically-added cards exist.
+  if ('IntersectionObserver' in window) {
+    const revealEls = document.querySelectorAll('.identity-card, .project-card, .principle, .spec-point');
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(12px)';
+      el.style.transition = 'opacity .35s ease, transform .35s ease';
+      revealObserver.observe(el);
+    });
+  }
 })();
